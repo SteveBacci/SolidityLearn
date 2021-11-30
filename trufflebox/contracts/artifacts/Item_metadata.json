@@ -1,0 +1,136 @@
+{
+	"compiler": {
+		"version": "0.6.1+commit.e6f7d5a4"
+	},
+	"language": "Solidity",
+	"output": {
+		"abi": [
+			{
+				"inputs": [
+					{
+						"internalType": "contract ItemManager",
+						"name": "_parentContract",
+						"type": "address"
+					},
+					{
+						"internalType": "uint256",
+						"name": "_priceInWei",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "_index",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "nonpayable",
+				"type": "constructor"
+			},
+			{
+				"stateMutability": "nonpayable",
+				"type": "fallback"
+			},
+			{
+				"inputs": [],
+				"name": "index",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "priceInWei",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "pricePaid",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "test",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"stateMutability": "payable",
+				"type": "receive"
+			}
+		],
+		"devdoc": {
+			"methods": {}
+		},
+		"userdoc": {
+			"methods": {}
+		}
+	},
+	"settings": {
+		"compilationTarget": {
+			"contracts/Item.sol": "Item"
+		},
+		"evmVersion": "istanbul",
+		"libraries": {},
+		"metadata": {
+			"bytecodeHash": "ipfs"
+		},
+		"optimizer": {
+			"enabled": false,
+			"runs": 200
+		},
+		"remappings": []
+	},
+	"sources": {
+		"contracts/Item.sol": {
+			"keccak256": "0xbfbd87a3d978dfeb52c0c1d6c695484d87756ae1d9f1eb7ef20a555bfffff4c4",
+			"urls": [
+				"bzz-raw://97f11eaa39cc0bea4533424cf47e1e5faa7442ef1da5769fda854dae1ba517d1",
+				"dweb:/ipfs/QmWnZHR41gYx3wtATn6S3LQzwCiWfGWpuisGx6KmDU5Mvi"
+			]
+		},
+		"contracts/ItemManager.sol": {
+			"keccak256": "0xbcb616c6fe1912151379bfa8da82f9bef80f10deb3d3f6b1b2c2f48db05f6e9a",
+			"urls": [
+				"bzz-raw://d4c2840d648f63152e2bda91e19f5dd662e90eaec736287180e44e70212f472e",
+				"dweb:/ipfs/QmdMWcnmoc6aPVNLN7HVzkG1rxgvDXzzT4xcTBPu2iNmWo"
+			]
+		},
+		"contracts/Ownable.sol": {
+			"keccak256": "0x6186c685f2d4db0903b2ef2cd5949ea5928f6bfbed3e0cd4719369dc85a155af",
+			"urls": [
+				"bzz-raw://191204fb7bb94e3af4083e26238cbe1e59ec6e9e53c0b3fc1f23ff6ac5ecc0c5",
+				"dweb:/ipfs/QmZ7XAQWG1PMJY4EDe5V8xMn9bwt8H8WQ2M8PK9ChC2UX2"
+			]
+		}
+	},
+	"version": 1
+}
