@@ -12,8 +12,7 @@ class App extends Component {
 
   // not great design to have web3 state in the main app class - better to have a distinct class 
   //state = { storageValue: 0, web3: null, accounts: null, contract: null };
-  state = { loaded: false, kycAddress: "0x123" };
-
+  state = { loaded: false, kycAddress: "0x123" , tokenSaleAddress: "", userTokens: 0 };
   componentDidMount = async () => {
     try {
       // Get network provider and web3 instance.
@@ -28,21 +27,22 @@ class App extends Component {
       this.networkId = await this.web3.eth.getChainId();      
      this.tokenInstance = new this.web3.eth.Contract(
         BGT_Token.abi,
-        BGT_Token.networks[this.networkId] && BGT_Token.networks[this,this.networkId].address
+        BGT_Token.networks[this.networkId] && BGT_Token.networks[this.networkId].address
       );
       this.tokenSaleInstance = new this.web3.eth.Contract(
         BGT_TokenSale.abi,
-        BGT_TokenSale.networks[this.networkId] && BGT_TokenSale.networks[this,this.networkId].address
+        BGT_TokenSale.networks[this.networkId] && BGT_TokenSale.networks[this.networkId].address
       );
       this.kycInstance = new this.web3.eth.Contract(
         KycContract.abi,
-        KycContract.networks[this.networkId] && KycContract.networks[this,this.networkId].address
+        KycContract.networks[this.networkId] && KycContract.networks[this.networkId].address
       );
 
       // Set web3, accounts, and contract to the state, and then proceed with an
       // example of interacting with the contract's methods.
-      //this.setState({ web3, accounts, contract: instance }, this.runExample);
-      this.setState({loaded:true });
+      //this.setState({ web3, accounts, contract: instance }, this.runExample);,this.updateUserTokens);
+      this.listenToTokenTransfer();
+      this.setState({loaded:true ,tokenSaleAddress: BGT_TokenSale.networks[this.networkId].address}, this.updateUserTokens);
       
     } catch (error) {
       // Catch any errors for any of the above operations.
@@ -68,20 +68,36 @@ class App extends Component {
     alert("Account "+kycAddress+" is now whitelisted");
   }
 
+  handleBuyToken = async () => {
+    await this.tokenSaleInstance.methods.buyTokens(this.accounts[0]).send({from: this.accounts[0], value: 1});
+  }
+
+  updateUserTokens = async() => {
+    let userTokens = await this.tokenInstance.methods.balanceOf(this.accounts[0]).call();
+    this.setState({userTokens: userTokens});
+  }
+
+  listenToTokenTransfer = async() => {
+    this.tokenInstance.events.Transfer({to: this.accounts[0]}).on("data", this.updateUserTokens);
+  }
+
   render() {
     if (!this.state.loaded) {
-      return <div>Loading Web3, accounts, and contract...</div>;
     }
     return (
       <div className="App">
         <h1>Bacci Gold Token</h1>
         <p>Get your Tokens!</p>
-        <h2>Kyc Whitelisting</h2>
+        <h2>Kyc Whitelisting v2</h2>
 
     
         <h2>Enable your account</h2>
         Address to allow: <input type="text" enabled="true" name="kycAddress" value={this.state.kycAddress} onChange={this.handleInputChange} />
         <button type="button" onClick={this.handleKycSubmit}>Add Address to Whitelist</button>
+        <h2>Buy Bacci Gold Tokens:</h2>
+        <p>Send Ether to this address: {this.state.tokenSaleAddress}</p>
+        <p>You have: {this.state.userTokens}</p>
+        <button type="button" onClick={this.handleBuyToken}>Buy more tokens</button>
       </div>
     
     );

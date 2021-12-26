@@ -108,7 +108,7 @@
   "sourceMap": "80:381:11:-:0;;;;;;;;;;;;;832:17:1;852:12;:10;;;:12;;:::i;:::-;832:32;;883:9;874:6;;:18;;;;;;;;;;;;;;;;;;940:9;907:43;;936:1;907:43;;;;;;;;;;;;798:159;80:381:11;;735:104:0;788:15;822:10;815:17;;735:104;:::o;80:381:11:-;;;;;;;",
   "deployedSourceMap": "80:381:11:-:0;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;157:95;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;:::i;:::-;;1656:145:1;;;:::i;:::-;;1033:77;;;:::i;:::-;;;;;;;;;;;;;;;;;;;;;258:94:11;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;:::i;:::-;;358:101;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;:::i;:::-;;;;;;;;;;;;;;;;;;;;;1950:240:1;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;:::i;:::-;;157:95:11;1247:12:1;:10;:12::i;:::-;1237:22;;:6;;;;;;;;;;:22;;;1229:67;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;241:4:11::1;224:7:::0;:14:::1;232:5;224:14;;;;;;;;;;;;;;;;:21;;;;;;;;;;;;;;;;;;157:95:::0;:::o;1656:145:1:-;1247:12;:10;:12::i;:::-;1237:22;;:6;;;;;;;;;;:22;;;1229:67;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;1762:1:::1;1725:40;;1746:6;::::0;::::1;;;;;;;;1725:40;;;;;;;;;;;;1792:1;1775:6:::0;::::1;:19;;;;;;;;;;;;;;;;;;1656:145::o:0;1033:77::-;1071:7;1097:6;;;;;;;;;;;1090:13;;1033:77;:::o;258:94:11:-;1247:12:1;:10;:12::i;:::-;1237:22;;:6;;;;;;;;;;:22;;;1229:67;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;340:5:11::1;323:7;:14;331:5;323:14;;;;;;;;;;;;;;;;:22;;;;;;;;;;;;;;;;;;258:94:::0;:::o;358:101::-;415:4;438:7;:14;446:5;438:14;;;;;;;;;;;;;;;;;;;;;;;;;431:21;;358:101;;;:::o;1950:240:1:-;1247:12;:10;:12::i;:::-;1237:22;;:6;;;;;;;;;;:22;;;1229:67;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;2058:1:::1;2038:22;;:8;:22;;;;2030:73;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;2147:8;2118:38;;2139:6;::::0;::::1;;;;;;;;2118:38;;;;;;;;;;;;2175:8;2166:6;::::0;:17:::1;;;;;;;;;;;;;;;;;;1950:240:::0;:::o;735:104:0:-;788:15;822:10;815:17;;735:104;:::o",
   "source": "pragma solidity >=0.6.0;\n\nimport \"@openzeppelin/contracts/access/Ownable.sol\";\n\ncontract KycContract is Ownable {\n    mapping(address => bool) allowed;\n\n    function setKycCompleted(address _addr) public onlyOwner {\n        allowed[_addr] = true;\n    }\n\n    function setKycRevoked(address _addr) public onlyOwner {\n        allowed[_addr] = false;\n    }\n\n    function kycCompleted(address _addr) public view returns(bool) {\n        return allowed[_addr];\n    }\n}",
-  "sourcePath": "/Users/stevenb/dev/SolidityLearn/Tokenisation/contracts/KycContract.sol",
+  "sourcePath": "/Users/stevenb/Dev/eth/SolidityLearn/Tokenisation/contracts/KycContract.sol",
   "ast": {
     "absolutePath": "project:/contracts/KycContract.sol",
     "exportedSymbols": {
@@ -1357,15 +1357,41 @@
     "version": "0.6.12+commit.27d51765.Emscripten.clang"
   },
   "networks": {
-    "1337": {
+    "3": {
       "events": {},
       "links": {},
-      "address": "0xe61ACb98E3551b1a1c0F3bf3F2D8892678f305c9",
-      "transactionHash": "0x367bf39f3a1a6f531e12ae0caa39eda4e0b1565fe03becd104f649662d75a98d"
+      "address": "0x529F7BF9B282EF2d8b6595E7B338fEf0539413DE",
+      "transactionHash": "0x55428fc79bf6a6803d66cca6e3dae12a139a26e7c2045a9b61abd1bc46e6f4f5"
+    },
+    "1337": {
+      "events": {
+        "0x8be0079c531659141344cd1fd0a4f28419497f9722a3daafe3b4186f6b6457e0": {
+          "anonymous": false,
+          "inputs": [
+            {
+              "indexed": true,
+              "internalType": "address",
+              "name": "previousOwner",
+              "type": "address"
+            },
+            {
+              "indexed": true,
+              "internalType": "address",
+              "name": "newOwner",
+              "type": "address"
+            }
+          ],
+          "name": "OwnershipTransferred",
+          "type": "event"
+        }
+      },
+      "links": {},
+      "address": "0xCd728829eFb11777950c09E49BB3565Beb671718",
+      "transactionHash": "0x247db4f4339a075de371932c6d796749c389e61f21d96d95265509911fed7e52"
     }
   },
   "schemaVersion": "3.4.3",
-  "updatedAt": "2021-11-29T15:37:00.030Z",
+  "updatedAt": "2021-12-22T12:50:16.122Z",
   "networkType": "ethereum",
   "devdoc": {
     "kind": "dev",
